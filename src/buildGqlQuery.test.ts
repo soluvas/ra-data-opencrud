@@ -87,59 +87,55 @@ describe('buildArgs', () => {
 
   it('returns an array of args correctly filtered when query has arguments', () => {
     expect(
-      print(
-        buildArgs({ args: [{ name: 'foo' }, { name: 'bar' }] } as Query, {
-          foo: 'foo_value'
-        })
-      )
+      buildArgs({ args: [{ name: 'foo' }, { name: 'bar' }] } as Query, {
+        foo: 'foo_value'
+      }).map(print)
     ).toEqual(['foo: $foo']);
   });
 });
 
 describe('buildApolloArgs', () => {
   it('returns an empty array when query does not have any arguments', () => {
-    expect(print(buildApolloArgs({ args: [] }))).toEqual([]);
+    expect(buildApolloArgs({ args: [] }).map(print)).toEqual([]);
   });
 
   it('returns an array of args correctly filtered when query has arguments', () => {
     expect(
-      print(
-        buildApolloArgs(
-          {
-            args: [
-              {
-                name: 'foo',
-                type: {
+      buildApolloArgs(
+        {
+          args: [
+            {
+              name: 'foo',
+              type: {
+                kind: TypeKind.NON_NULL,
+                ofType: {
+                  kind: TypeKind.SCALAR,
+                  name: 'Int'
+                }
+              }
+            },
+            {
+              name: 'barId',
+              type: { kind: TypeKind.SCALAR, name: 'ID' }
+            },
+            {
+              name: 'barIds',
+              type: {
+                kind: TypeKind.LIST,
+                ofType: {
                   kind: TypeKind.NON_NULL,
                   ofType: {
                     kind: TypeKind.SCALAR,
-                    name: 'Int'
+                    name: 'ID'
                   }
                 }
-              },
-              {
-                name: 'barId',
-                type: { kind: TypeKind.SCALAR, name: 'ID' }
-              },
-              {
-                name: 'barIds',
-                type: {
-                  kind: TypeKind.LIST,
-                  ofType: {
-                    kind: TypeKind.NON_NULL,
-                    ofType: {
-                      kind: TypeKind.SCALAR,
-                      name: 'ID'
-                    }
-                  }
-                }
-              },
-              { name: 'bar' }
-            ]
-          } as Query,
-          { foo: 'foo_value', barId: 100, barIds: [101, 102] }
-        )
-      )
+              }
+            },
+            { name: 'bar' }
+          ]
+        } as Query,
+        { foo: 'foo_value', barId: 100, barIds: [101, 102] }
+      ).map(print)
     ).toEqual(['$foo: Int!', '$barId: ID', '$barIds: [ID!]']);
   });
 });
@@ -178,9 +174,9 @@ describe('buildFields', () => {
     ];
 
     expect(
-      print(
-        buildFields(introspectionResults as IntrospectionResult)(fields as any)
-      )
+      buildFields(introspectionResults as IntrospectionResult)(
+        fields as any
+      ).map(print)
     ).toEqual([
       'id',
       `linked {

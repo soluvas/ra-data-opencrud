@@ -7,7 +7,7 @@ export interface Resource {
 
 export interface IntrospectionResult {
   types: IntrospectionType[];
-  queries: IntrospectionType[];
+  queries?: IntrospectionType[];
   resources: Resource[];
-  schema: IntrospectionSchema;
+  schema?: IntrospectionSchema;
 }
