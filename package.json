@@ -32,29 +32,29 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "graphql-tag": "^2.6.1",
-    "lodash": "~4.17.5",
-    "pluralize": "^7.0.0",
-    "ra-data-graphql": "^2.3.0"
+    "graphql-tag": "^2.10.3",
+    "lodash": "^4.17.15",
+    "pluralize": "^8.0.0",
+    "ra-data-graphql": "^3.2.2"
   },
   "peerDependencies": {
     "graphql": "^0.13.2",
     "react-admin": "^2.3.0"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.2",
-    "@types/lodash": "^4.14.116",
-    "@types/pluralize": "^0.0.29",
-    "apollo-client": "^2.4.2",
-    "babel-cli": "~6.26.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "@types/jest": "^25.2.1",
+    "@types/lodash": "^4.14.149",
+    "@types/pluralize": "0.0.29",
+    "apollo-client": "^2.6.8",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "cross-env": "^5.2.0",
-    "graphql": "^0.13.2",
-    "jest": "^23.6.0",
-    "react-admin": "^2.3.0",
-    "rimraf": "^2.6.2",
+    "cross-env": "^7.0.2",
+    "graphql": "^15.0.0",
+    "jest": "^25.2.7",
+    "react-admin": "^3.4.0",
+    "rimraf": "^3.0.2",
     "semantic-release": "^17.0.4",
-    "typescript": "^3.0.3"
+    "typescript": "^3.8.3"
   }
 }
